@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paises</title>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+    <h1>Listado de empleados de la empresa</h1>
+    <br />
+    <h2><span th:text="${msg}"></span></h2>
+    </p>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Salario</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </thead>
+        <tbody>
+            <tr th:each="empleado:${listaEmpleados}">
+                <td th:text="${empleado.id}"></td>
+                <td th:text="${empleado.nombre}"></td>
+                <td th:text="${empleado.email}"></td>
+                <td th:text="${empleado.salario}"></td>
+                <td><a th:href="@{/editar/{id}(id=${empleado.id})}">Editar</a></td>
+                <td><a th:href="@{/borrar/{id}(id=${empleado.id})}">Borrar</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/nuevo}">Nuevo empleado</a><br />
+</body>
+
+</html>
